@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "InstagramSG"
+                configuration.clientKey = "JSFSGMSC"
+                configuration.server = "https://safe-dawn-14689.herokuapp.com/parse"
+                
+            })
+        )
+        
+//        Parse.initializeWithConfiguration(
+//            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+//                configuration.applicationId = "InstagramSG"
+//                configuration.clientKey = "JSFSGMSC"
+//                configuration.server = "https://safe-dawn-14689.herokuapp.com/parse"
+//            })
+//        )
+//        
+        
         return true
+        
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
